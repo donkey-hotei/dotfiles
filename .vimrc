@@ -27,6 +27,11 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'stephenmckinney/vim-solarized-powerline'
 Plugin 'tmux-plugins/vim-tmux-focus-events'
 Plugin 'thoughtbot/vim-rspec'
+Plugin 'mattn/emmet-vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'w0rp/ale'
+Plugin 'skywind3000/asyncrun.vim'
 call vundle#end()
 
 " Settings
@@ -36,7 +41,7 @@ syntax on
 set background=dark
 set noeol
 set binary
-colorscheme industry
+colorscheme elflord
 
 " presentation settings
 set relativenumber      " precede each line with its line number
@@ -78,6 +83,7 @@ set autoindent          " automatically indent new line
 set ts=4                " number of spaces in a tab
 set sw=4                " number of spaces for indent
 set et                  " expand tabs into spaces
+set tabstop=8 softtabstop=0 expandtab shiftwidth=4 smarttab
 
 " Specific indent settings for filetypes
 autocmd Filetype html setlocal ts=2 sts=2 sw=2
@@ -138,6 +144,25 @@ let g:powerline_config_overrides =
 
 "let g:syntastic_ruby_checkers = ['rubocop']
 "let g:syntastic_ruby_rubocop_args = "-R"
+
+" emmet
+let g:user_emmet_settings =
+        \ {
+        \   'javascript.jsx' : {
+        \       'extends' : 'jsx',
+        \   },
+        \ }
+
+" ale
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening new file.
+
+" prettier with asyncrun
+autocmd BufWritePost *.js AsyncRun -post=checktime ./node_modules/.bin/eslint --fix %
+
+" rubocop with asynrun
+autocmd BufWritePost *.rb AsyncRun -post=checktime rubocop -a %
 
 " APIDock browser command
 let g:browser = 'open -a /Applications/Firefox.app'
