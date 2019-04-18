@@ -5,26 +5,6 @@
 export PATH="$PATH:$HOME/.rvm/bin"   # Add RVM to PATH for scripting
 export PATH="$PATH:/opt/etcher-cli"  # Add Etcher CLI to PATH for writing images.
 
-# Environment Variables
-
-# misc.
-export APIARY_API_KEY="112d3dcbb4e11755b97979b08ee59b07"
-export GPGKEY="$(gpg -K | awk 'NR==3 {print $2}' | sed 's/2048R\///g')"
-export WECHALLUSER="donkey_hotei"
-export WECHALLTOKEN="891CB-43CC8-DDA07-75697-A312E-0B2BA"
-export PORTAL_HOST="beta.milecatcher.com"
-export GOROOT=/usr/local/go
-export GOPATH=~/go
-export PATH=$GOROOT/bin:$GOPATH/bin:$PATH
-export PATH=~/Downloads/android_studio/bin:$PATH
-export PATH=/usr/local/bin:$PATH
-
-# portal
-export REACT_APP_API_BASE="http://localhost:3000/api"
-export REACT_APP_MAPZEN_KEY="mapzen-iTvgY6T"
-export REACT_APP_TILE_SERVER_KEY="yx0iPNVCrA2h8zf26cyd"
-export REACT_APP_GRAPH_HOPPER_KEY="89818ebf-1f20-4852-8f2a-fe7b5176fda7"
-
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
